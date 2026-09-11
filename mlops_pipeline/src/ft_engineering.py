@@ -233,8 +233,9 @@ class ReglasNegocio(BaseEstimator, TransformerMixin):
             rango_min, rango_max = self.rango_puntaje_datacredito
             mask_negativo = X["puntaje_datacredito"] < 0
             mask_intermedio = (X["puntaje_datacredito"] > 0) & (X["puntaje_datacredito"] < rango_min)
+            mask_alto = X["puntaje_datacredito"] > rango_max
             # El sentinela 0 ("sin score") se conserva intacto
-            X.loc[mask_negativo | mask_intermedio, "puntaje_datacredito"] = np.nan
+            X.loc[mask_negativo | mask_intermedio | mask_alto, "puntaje_datacredito"] = np.nan
         return X
 
     def transform(self, X):
@@ -259,7 +260,8 @@ class Imputacion(BaseEstimator, TransformerMixin):
 
     def __init__(self,
                  cols_mediana=("saldo_mora", "saldo_total", "saldo_mora_codeudor",
-                               "puntaje_datacredito", "promedio_ingresos_datacredito"),
+                               "puntaje_datacredito", "promedio_ingresos_datacredito",
+                               "edad_cliente"),
                  cols_moda=("tendencia_ingresos",)):
         self.cols_mediana = cols_mediana
         self.cols_moda = cols_moda
@@ -338,7 +340,10 @@ class NuevasVariables(BaseEstimator, TransformerMixin):
 
         if "fecha_prestamo" in X.columns:
             fecha = pd.to_datetime(X["fecha_prestamo"], errors="coerce")
-            X["mes_desembolso"] = fecha.dt.month.astype("Int64")
+            # 0 = sentinela "mes desconocido" (fecha_prestamo no parseable / NaT).
+            # Se evita el dtype Int64 nullable: OneHotEncoder no maneja pd.NA de
+            # forma confiable en el ordenamiento de categorías.
+            X["mes_desembolso"] = fecha.dt.month.fillna(0).astype(int)
             fecha_corte = self.fecha_corte_ if self.fecha_corte_ is not None else fecha.max()
             X["antiguedad_meses"] = (
                 (fecha_corte.year - fecha.dt.year) * 12 + (fecha_corte.month - fecha.dt.month)
