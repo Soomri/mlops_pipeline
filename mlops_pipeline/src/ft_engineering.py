@@ -329,6 +329,7 @@ class NuevasVariables(BaseEstimator, TransformerMixin):
 
     def __init__(self):
         self.mediana_relacion_ = None
+        self.mediana_antiguedad_ = None
         self.fecha_corte_ = None
 
     def _construir(self, X):
@@ -356,6 +357,8 @@ class NuevasVariables(BaseEstimator, TransformerMixin):
         X_temp = self._construir(X)
         if "relacion_cuota_salario" in X_temp.columns:
             self.mediana_relacion_ = X_temp["relacion_cuota_salario"].median()
+        if "antiguedad_meses" in X_temp.columns:
+            self.mediana_antiguedad_ = X_temp["antiguedad_meses"].median()
         return self
 
     def transform(self, X):
@@ -363,6 +366,10 @@ class NuevasVariables(BaseEstimator, TransformerMixin):
         if "relacion_cuota_salario" in X.columns and self.mediana_relacion_ is not None:
             # NaN producido por salario_cliente == 0 (división segura) -> mediana
             X["relacion_cuota_salario"] = X["relacion_cuota_salario"].fillna(self.mediana_relacion_)
+        if "antiguedad_meses" in X.columns and self.mediana_antiguedad_ is not None:
+            # NaN producido por fecha_prestamo no parseable (NaT) -> mediana,
+            # mismo patrón que mes_desembolso (sentinela 0) y relacion_cuota_salario
+            X["antiguedad_meses"] = X["antiguedad_meses"].fillna(self.mediana_antiguedad_)
         return X
 
 
