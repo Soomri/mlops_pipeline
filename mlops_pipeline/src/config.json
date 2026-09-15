@@ -3,9 +3,15 @@
   "curated_data_path": "../BD_creditos_modelo.csv",
   "curated_data_pkl_path": "../BD_creditos_modelo.pkl",
   "csv_read_options": {
-    "sep": ";",
-    "decimal": ",",
-    "encoding": "utf-8-sig"
+    "raw": {
+      "sep": ";",
+      "decimal": ",",
+      "encoding": "utf-8-sig"
+    },
+    "curated": {
+      "sep": ",",
+      "decimal": "."
+    }
   },
   "columnas_esperadas": [
     "tipo_credito",
@@ -31,6 +37,30 @@
     "promedio_ingresos_datacredito",
     "tendencia_ingresos",
     "Pago_atiempo"
+  ],
+  "columnas_esperadas_curado": [
+    "tipo_credito",
+    "fecha_prestamo",
+    "capital_prestado",
+    "plazo_meses",
+    "edad_cliente",
+    "tipo_laboral",
+    "salario_cliente",
+    "total_otros_prestamos",
+    "cuota_pactada",
+    "puntaje_datacredito",
+    "cant_creditosvigentes",
+    "huella_consulta",
+    "saldo_mora",
+    "saldo_total",
+    "saldo_mora_codeudor",
+    "creditos_sectorFinanciero",
+    "creditos_sectorCooperativo",
+    "creditos_sectorReal",
+    "promedio_ingresos_datacredito",
+    "tendencia_ingresos",
+    "Pago_atiempo",
+    "relacion_cuota_salario"
   ],
   "target_col": "Pago_atiempo"
 }

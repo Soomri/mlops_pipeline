@@ -84,6 +84,14 @@ class CorreccionTipos(BaseEstimator, TransformerMixin):
     )
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def transform(self, X):
@@ -125,6 +133,14 @@ class RecodificarTendenciaIngresos(BaseEstimator, TransformerMixin):
     ETIQUETAS_VALIDAS = {"Creciente", "Decreciente", "Estable"}
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def _recodificar_valor(self, valor):
@@ -160,6 +176,14 @@ class EliminarDuplicados(BaseEstimator, TransformerMixin):
         self.subset = subset
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def transform(self, X):
@@ -303,6 +327,14 @@ class Outliers(BaseEstimator, TransformerMixin):
         self.edad_max = edad_max
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def transform(self, X):
@@ -387,6 +419,14 @@ class DiscretizarAtributos(BaseEstimator, TransformerMixin):
         self.nueva_columna = nueva_columna or f"{columna}_rango"
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def transform(self, X):
@@ -401,6 +441,14 @@ class ToCategory(BaseEstimator, TransformerMixin):
         self.cols = cols
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def transform(self, X):
@@ -424,6 +472,14 @@ class ColumnasIrrelevantes(BaseEstimator, TransformerMixin):
         self.cols_to_drop = cols_to_drop
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def transform(self, X):
@@ -443,6 +499,14 @@ class EliminarCategorias(BaseEstimator, TransformerMixin):
         self.cats_to_drop = cats_to_drop
 
     def fit(self, X, y=None):
+        # Marca explícita de "entrenado": sklearn decide si un Pipeline está
+        # fit revisando su ÚLTIMO paso (Pipeline.__sklearn_is_fitted__), y
+        # ese chequeo busca algún atributo terminado en "_". Sin esta marca,
+        # un pipeline que termine en uno de estos pasos sin estado se
+        # reporta como "no entrenado" incluso después de llamar fit()
+        # (FutureWarning hoy, error en sklearn 1.8), rompiendo el patrón
+        # fit(X_train) / transform(X_test) usado para evitar data leakage.
+        self.fitted_ = True
         return self
 
     def transform(self, X):
