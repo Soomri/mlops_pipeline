@@ -1,0 +1,49 @@
+{
+  "generado_en": "2026-09-16T00:42:16.794236+00:00",
+  "n_referencia": 8610,
+  "n_actual": 300,
+  "datadrift_por_columna": {
+    "capital_prestado": {
+      "psi": 0.018825348181785533,
+      "alerta": false
+    },
+    "plazo_meses": {
+      "psi": 0.007227888974843485,
+      "alerta": false
+    },
+    "edad_cliente": {
+      "psi": 0.011947372051811218,
+      "alerta": false
+    },
+    "salario_cliente": {
+      "psi": 0.009793805862305941,
+      "alerta": false
+    },
+    "total_otros_prestamos": {
+      "psi": 0.01246184534571212,
+      "alerta": false
+    },
+    "cuota_pactada": {
+      "psi": 0.022741599724016345,
+      "alerta": false
+    },
+    "puntaje_datacredito": {
+      "psi": 0.03382684609608875,
+      "alerta": false
+    },
+    "cant_creditosvigentes": {
+      "psi": 0.05563214106819394,
+      "alerta": false
+    },
+    "huella_consulta": {
+      "psi": 0.03162550310812283,
+      "alerta": false
+    },
+    "saldo_total": {
+      "psi": 0.011253887060037233,
+      "alerta": false
+    }
+  },
+  "columnas_en_alerta": [],
+  "drift_detectado": false
+}

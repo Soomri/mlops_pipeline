@@ -1,0 +1,69 @@
+{
+  "modelo_seleccionado": "LogisticRegression",
+  "metricas_test": {
+    "accuracy": 0.6516488620529494,
+    "balanced_accuracy": 0.6448098010535273,
+    "precision": 0.9730909090909091,
+    "recall": 0.6523647001462701,
+    "f1": 0.7810858143607706
+  },
+  "consistencia_cv": {
+    "LogisticRegression": {
+      "cv_balanced_accuracy_media": 0.6133176459481434,
+      "cv_std": 0.02821124547926051,
+      "tiempo_entrenamiento_seg": 0.09910340000351425
+    },
+    "DecisionTree": {
+      "cv_balanced_accuracy_media": 0.5759104807531926,
+      "cv_std": 0.01814773533747308,
+      "tiempo_entrenamiento_seg": 0.11637730000074953
+    },
+    "RandomForest": {
+      "cv_balanced_accuracy_media": 0.5294810983454137,
+      "cv_std": 0.01904918664157899,
+      "tiempo_entrenamiento_seg": 3.4576044999994338
+    }
+  },
+  "tabla_comparativa": [
+    {
+      "modelo": "LogisticRegression",
+      "accuracy": 0.6516488620529494,
+      "balanced_accuracy": 0.6448098010535273,
+      "precision": 0.9730909090909091,
+      "recall": 0.6523647001462701,
+      "f1": 0.7810858143607706
+    },
+    {
+      "modelo": "DecisionTree",
+      "accuracy": 0.6460752438457965,
+      "balanced_accuracy": 0.5673535625854438,
+      "precision": 0.9620071684587813,
+      "recall": 0.6543149683081424,
+      "f1": 0.7788740568775392
+    },
+    {
+      "modelo": "RandomForest",
+      "accuracy": 0.9424059451927543,
+      "balanced_accuracy": 0.5412185351956482,
+      "precision": 0.9564187588820464,
+      "recall": 0.984397854705022,
+      "f1": 0.9702066314271984
+    },
+    {
+      "modelo": "HeuristicModel",
+      "accuracy": 0.7765908035299582,
+      "balanced_accuracy": 0.5799586046022505,
+      "precision": 0.961764705882353,
+      "recall": 0.7971721111652852,
+      "f1": 0.8717675286590243
+    },
+    {
+      "modelo": "Baseline trivial (clase mayoritaria)",
+      "accuracy": 0.9526242452392011,
+      "balanced_accuracy": 0.5,
+      "precision": 0.9526242452392011,
+      "recall": 1.0,
+      "f1": 0.9757373929590866
+    }
+  ]
+}
