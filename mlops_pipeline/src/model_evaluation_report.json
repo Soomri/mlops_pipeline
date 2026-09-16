@@ -1,0 +1,23 @@
+{
+  "generado_en": "2026-09-16T00:42:13.216369+00:00",
+  "n_registros_evaluados": 2153,
+  "n_registros_descartados": 0,
+  "metricas": {
+    "modelo": "modelo_desplegado",
+    "accuracy": 0.6516488620529494,
+    "balanced_accuracy": 0.6448098010535273,
+    "precision": 0.9730909090909091,
+    "recall": 0.6523647001462701,
+    "f1": 0.7810858143607706
+  },
+  "matriz_confusion": [
+    [
+      65,
+      37
+    ],
+    [
+      713,
+      1338
+    ]
+  ]
+}
