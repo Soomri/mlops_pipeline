@@ -3,3 +3,7 @@ __pycache__/
 .ipynb_checkpoints/
 .env
 venv/
+
+# Salidas de la Fase 2 en GCP
+gcp/salidas/
+gcp/pipeline_creditos.json
